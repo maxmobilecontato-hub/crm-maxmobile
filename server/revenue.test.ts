@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { calculateRevenue } from "../shared/revenue";
+import { calculateMonthlyRevenue } from "../shared/revenue";
 
-describe("calculateRevenue", () => {
-  it("multiplies activated leads by the contract rate", () => {
-    expect(calculateRevenue(12480, 1)).toBe(12480);
+describe("calculateMonthlyRevenue", () => {
+  it("sums setup, activation and recurring monthly revenue", () => {
+    expect(calculateMonthlyRevenue(248, 12480, 10, 1, 5)).toBe(16200);
   });
 
   it("does not produce negative revenue", () => {
-    expect(calculateRevenue(-10, -1)).toBe(0);
+    expect(calculateMonthlyRevenue(-10, -2, -1, -1, -1)).toBe(0);
   });
 });
